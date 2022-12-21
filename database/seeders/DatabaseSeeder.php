@@ -18,9 +18,11 @@ class DatabaseSeeder extends Seeder
 
         \App\Models\User::factory()->create([
             'name' => 'Muslim',
+            'email' => 'admin@admin.com',
             'role' => 'site-owner',
             'image' => '/storage/site/profile.jpg',
-            'password' => bcrypt('123456')
+            'password' => bcrypt('123456'),
+            'about' => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque ipsam odio laborum aliquid id. Dolores numquam, illum rem dolorem dolor maxime est officiis sit tenetur! Quod voluptatibus veniam necessitatibus cupiditate."
         ]);
     }
 }
