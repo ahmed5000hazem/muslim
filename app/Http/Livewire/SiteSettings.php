@@ -13,9 +13,9 @@ class SiteSettings extends Component implements Forms\Contracts\HasForms
     protected function getFormSchema(): array 
     {
         return [
-            Forms\Components\TextInput::make('home-header-title')->label("Site Title"),
+            Forms\Components\TextInput::make('home-header-title')->label("Site Title")->required(),
             Forms\Components\TextInput::make('home-header-banner_text')->label("Site Banner Text"),
-            Forms\Components\FileUpload::make('banner')->directory('/site')->label("Banner")
+            Forms\Components\FileUpload::make('home-header-banner')->directory('/site')->label("Banner")->required()
         ];
     }
     

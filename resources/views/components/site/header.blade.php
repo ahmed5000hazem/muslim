@@ -1,7 +1,11 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
 
-        <h1 class="logo"><a href="/">DevFolio</a></h1>
+        <h1 class="logo"><a href="/">
+        @isset($home['home-header-title'])
+            {{$home['home-header-title']}}
+        @endisset
+        </a></h1>
 
         <nav id="navbar" class="navbar">
             <ul>
