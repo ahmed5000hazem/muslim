@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\HomePage;
 use Filament\Forms;
+use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
@@ -46,6 +47,8 @@ class SiteSettings extends Component implements Forms\Contracts\HasForms
         }
         // dd($data);
         HomePage::insert($data);
+
+        Notification::make()->title('site data updated.')->success()->send();
     }
 
 }
