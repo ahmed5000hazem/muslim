@@ -8,6 +8,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Notifications\Notification;
 use Livewire\Component;
 
 class AdminProfile extends Component implements HasForms
@@ -41,5 +42,6 @@ class AdminProfile extends Component implements HasForms
     public function updateProfile()
     {
         User::where('id', $this->user['id'])->update($this->form->getState());
+        Notification::make()->title('profile updated successfully')->success()->send();
     }
 }
