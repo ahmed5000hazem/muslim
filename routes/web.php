@@ -21,8 +21,7 @@ Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
 
     Route::get('/', function () { return view('dashboard'); })->name('dashboard');
 
-    Route::get('/profile', [ProfileController::class, "edit"]);
-    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile', [ProfileController::class, "edit"])->name('profile');
 });
 
 // Route::middleware('auth')->group(function () {
