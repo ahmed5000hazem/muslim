@@ -16,7 +16,7 @@
                                     <div class="row">
                                         <div class="col-sm-6 col-md-5">
                                             <div class="about-img">
-                                                <img src="{{asset($user->image)}}"
+                                                <img src="{{asset('storage/'.$user->image)}}"
                                                     class="img-fluid rounded b-shadow-a" alt="">
                                             </div>
                                         </div>
