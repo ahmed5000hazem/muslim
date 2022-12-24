@@ -1,53 +1,52 @@
 @extends('layouts.master')
 @section('content')
-<body>
     @include('components.site.header')
     @include('components.site.hero-section')
     <main id="main">
 
         @if ($user->about)
-        <section id="about" class="about-mf sect-pt4 route">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="box-shadow-full">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-md-5">
-                                            <div class="about-img">
-                                                <img src="{{asset('storage/'.$user->image)}}"
-                                                    class="img-fluid rounded b-shadow-a" alt="">
+            <section id="about" class="about-mf sect-pt4 route">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="box-shadow-full">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-5">
+                                                <div class="about-img">
+                                                    <img src="{{asset('storage/'.$user->image)}}"
+                                                        class="img-fluid rounded b-shadow-a" alt="">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-7">
-                                            <div class="about-info">
-                                                @if ($user->name)<p><span class="title-s">Name: </span> <span>{{$user->name}}</span></p>@endif
-                                                @if ($user->title)<p><span class="title-s">Profile: </span> <span> {{$user->title}} </span></p>@endif
-                                                @if ($user->email)<p><span class="title-s">Email: </span> <span>{{$user->email}}</span></p>@endif
-                                                @if ($user->phone)<p><span class="title-s">Phone: </span> <span>{{$user->phone}}</span></p>@endif
+                                            <div class="col-sm-6 col-md-7">
+                                                <div class="about-info">
+                                                    @if ($user->name)<p><span class="title-s">Name: </span> <span>{{$user->name}}</span></p>@endif
+                                                    @if ($user->title)<p><span class="title-s">Profile: </span> <span> {{$user->title}} </span></p>@endif
+                                                    @if ($user->email)<p><span class="title-s">Email: </span> <span>{{$user->email}}</span></p>@endif
+                                                    @if ($user->phone)<p><span class="title-s">Phone: </span> <span>{{$user->phone}}</span></p>@endif
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="about-me pt-4 pt-md-0">
-                                        <div class="title-box-2">
-                                            <h5 class="title-left">
-                                                About me
-                                            </h5>
+                                    <div class="col-md-6">
+                                        <div class="about-me pt-4 pt-md-0">
+                                            <div class="title-box-2">
+                                                <h5 class="title-left">
+                                                    About me
+                                                </h5>
+                                            </div>
+                                            <p class="lead">
+                                                {{$user->about}}
+                                            </p>
                                         </div>
-                                        <p class="lead">
-                                            {{$user->about}}
-                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
         @endif
 
         <section id="services" class="services-mf pt-5 route">
@@ -598,8 +597,8 @@
                                             </h5>
                                         </div>
                                         <div>
-                                            <form action="forms/contact.php" method="post" role="form"
-                                                class="php-email-form">
+                                            <form action="/contact" method="post" role="form">
+                                                @csrf
                                                 <div class="row">
                                                     <div class="col-md-12 mb-3">
                                                         <div class="form-group">
@@ -625,10 +624,19 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-12 text-center my-3">
-                                                        <div class="loading">Loading</div>
-                                                        <div class="error-message"></div>
-                                                        <div class="sent-message">Your message has been sent. Thank
-                                                            you!</div>
+                                                        @if(session('send-message-response'))
+                                                            @php
+                                                                $messages = session('send-message-response')['messages'];
+                                                                $status = session('send-message-response')['status'];
+                                                            @endphp
+                                                            <div class="response-content position-fixed" style="top: 100px; left: 50px">
+                                                                @foreach ($messages as $msg)
+                                                                    <div class="alert alert-{{$status ? 'success':'danger'}} d-flex justify-content-between" style="min-width: 300px"> {{$msg}}
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                     <div class="col-md-12 text-center">
                                                         <button type="submit"
@@ -655,8 +663,6 @@
                                                 mollitia inventore?
                                             </p>
                                             <ul class="list-ico">
-                                                <li><span class="bi bi-geo-alt"></span> 329 WASHINGTON ST BOSTON, MA
-                                                    02108</li>
                                                 <li><span class="bi bi-phone"></span> (617) 557-0089</li>
                                                 <li><span class="bi bi-envelope"></span> contact@example.com</li>
                                             </ul>
@@ -697,5 +703,4 @@
             </div>
         </div>
     </footer>
-</body>
 @endsection

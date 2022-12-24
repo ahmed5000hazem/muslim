@@ -15,6 +15,7 @@
   <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
 
   <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+  
 </head>
 
 <body>
@@ -33,7 +34,7 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('assets/js/main.js')}}"></script>
-
+  @stack('scripts')
 </body>
 
 </html>
