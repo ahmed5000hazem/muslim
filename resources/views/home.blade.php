@@ -406,7 +406,7 @@
                 </div>
             </div>
         </section>
-        <div class="testimonials paralax-mf bg-image" style="background-image: url(assets/img/overlay-bg.jpg)">
+        {{-- <div class="testimonials paralax-mf bg-image" style="background-image: url(assets/img/overlay-bg.jpg)">
             <div class="overlay-mf"></div>
             <div class="container">
                 <div class="row">
@@ -451,17 +451,14 @@
                             </div>
                             <div class="swiper-pagination"></div>
                         </div>
-
-                        <!-- <div id="testimonial-mf" class="owl-carousel owl-theme">
-          
-        </div> -->
                     </div>
                 </div>
             </div>
-        </div><!-- End Testimonials Section -->
+        </div> --}}
+        <!-- End Testimonials Section -->
 
         <!-- ======= Blog Section ======= -->
-        <section id="blog" class="blog-mf sect-pt4 route">
+        {{-- <section id="blog" class="blog-mf sect-pt4 route">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -581,7 +578,8 @@
                     </div>
                 </div>
             </div>
-        </section><!-- End Blog Section -->
+        </section> --}}
+        <!-- End Blog Section -->
 
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route"
@@ -665,13 +663,13 @@
                                         </div>
                                         <div class="socials">
                                             <ul>
-                                                <li><a href=""><span class="ico-circle"><i
+                                                <li><a href=""><span class="ico-circle" style="padding: 3px"><i
                                                                 class="bi bi-facebook"></i></span></a></li>
-                                                <li><a href=""><span class="ico-circle"><i
+                                                <li><a href=""><span class="ico-circle" style="padding: 3px"><i
                                                                 class="bi bi-instagram"></i></span></a></li>
-                                                <li><a href=""><span class="ico-circle"><i
+                                                <li><a href=""><span class="ico-circle" style="padding: 3px"><i
                                                                 class="bi bi-twitter"></i></span></a></li>
-                                                <li><a href=""><span class="ico-circle"><i
+                                                <li><a href=""><span class="ico-circle" style="padding: 3px"><i
                                                                 class="bi bi-linkedin"></i></span></a></li>
                                             </ul>
                                         </div>
@@ -692,7 +690,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="copyright-box">
-                        <p class="copyright">&copy; Copyright <strong>DevFolio</strong>. All Rights Reserved</p>
+                        <p class="copyright">&copy; Copyright <strong>Muslim</strong>. All Rights Reserved</p>
                         <div class="credits"></div>
                     </div>
                 </div>

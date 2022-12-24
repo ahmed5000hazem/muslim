@@ -13,7 +13,7 @@
                 <li><a class="nav-link scrollto" href="#about">About</a></li>
                 <li><a class="nav-link scrollto" href="#services">Services</a></li>
                 <li><a class="nav-link scrollto " href="#work">Work</a></li>
-                <li><a class="nav-link scrollto " href="#blog">Blog</a></li>
+                {{-- <li><a class="nav-link scrollto " href="#blog">Blog</a></li> --}}
                 @auth
                 <li><a class="nav-link scrollto " href="{{route('dashboard')}}">Admin</a></li>
                 @endauth
