@@ -14,7 +14,7 @@ class HomeController extends Controller
 
     public function getHomePageData()
     {
-        $home = Cache::remember('home-data', 24 * 60 , function () {
+        $home = Cache::remember('home-data', 60 , function () {
             return HomePage::all();
         });
         foreach ($home as $rec) $data[$rec->key] = $rec->value;
