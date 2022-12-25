@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('subject');
             $table->string('email');
             $table->text('message');
-            $table->timestamp('read_at');
+            $table->timestamp('read_at')->nullable();
             $table->timestamps();
         });
     }

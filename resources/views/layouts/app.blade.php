@@ -18,7 +18,7 @@
         @stack('scripts')
     </head>
 
-    <body class="antialiased">
+    <body class="antialiased dark:bg-gray-900">
         {{ $slot }}
 
         @livewire('notifications')
