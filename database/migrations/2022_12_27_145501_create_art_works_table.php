@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('art_works', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
             $table->text('description');
             $table->string('work_link')->nullable();
             $table->string('image')->nullable();
-            $table->tinyInteger('type');
-            $table->timestamp('show_data')->nullable();
+            $table->string('type');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

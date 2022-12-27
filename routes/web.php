@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ArtWorkController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -25,7 +26,10 @@ Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
 
     Route::get('/profile', [ProfileController::class, "edit"])->name('profile');
 
-    // Route::get('work');
+    Route::prefix('work')->group(function () {
+        Route::get('/', [ArtWorkController::class, 'index'])->name('admin.work');
+        Route::get('create', [ArtWorkController::class, 'create'])->name('admin.work.create');
+    });
     
     Route::prefix('/contact')->group(function () {
         Route::get('/', [ContactController::class, 'index'])->name('admin.contact');
