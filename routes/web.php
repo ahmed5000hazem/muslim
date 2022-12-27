@@ -24,6 +24,8 @@ Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
     Route::get('/', function () { return view('dashboard'); })->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, "edit"])->name('profile');
+
+    // Route::get('work');
     
     Route::prefix('/contact')->group(function () {
         Route::get('/', [ContactController::class, 'index'])->name('admin.contact');
