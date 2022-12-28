@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('work_link')->nullable();
             $table->string('image')->nullable();
             $table->string('type');
+            $table->boolean('featured')->default(0);
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

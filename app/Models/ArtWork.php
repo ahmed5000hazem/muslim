@@ -18,6 +18,7 @@ class ArtWork extends Model
         'image',
         'type',
         'published_at',
+        'featured'
     ];
 
     public function toSearchableArray()

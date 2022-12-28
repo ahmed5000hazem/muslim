@@ -6,6 +6,7 @@ use App\Kernel\EnumManager\ArtWorkTypeEnum;
 use App\Models\ArtWork;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Filters\Filter;
@@ -43,19 +44,21 @@ class Index extends Component implements HasTable
         }
         return [
             SelectFilter::make('type')->options($enum)->attribute('type'),
+            Filter::make('featured')->query(fn (Builder $query): Builder => $query->where('featured', 1)),
+            Filter::make('normal work')->query(fn (Builder $query): Builder => $query->where('featured', 0)),
         ];
     }
 
     protected function getTableColumns(): array 
     {
-        foreach(ArtWorkTypeEnum::cases() as $type){
-            $enum[$type->name] = $type->value;
-        }
+        foreach(ArtWorkTypeEnum::cases() as $type) $enum[$type->name] = $type->value;
+        
         return [
             TextColumn::make('title')->url(function ($record) {
                 return route('admin.work.edit', ['work' => $record->id]);
             }),
-            TextColumn::make('description')->words(15),
+            TextColumn::make('description')->words(5),
+            ToggleColumn::make('featured'),
             TextColumn::make('work_link'),
             TextColumn::make('type')->enum($enum),
             ImageColumn::make('image')
