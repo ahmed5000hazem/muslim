@@ -28,7 +28,8 @@ Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
 
     Route::prefix('work')->group(function () {
         Route::get('/', [ArtWorkController::class, 'index'])->name('admin.work');
-        Route::get('create', [ArtWorkController::class, 'create'])->name('admin.work.create');
+        Route::get('/create', [ArtWorkController::class, 'create'])->name('admin.work.create');
+        Route::get('/edit/{work}', [ArtWorkController::class, 'edit'])->name('admin.work.edit');
     });
     
     Route::prefix('/contact')->group(function () {
