@@ -35,6 +35,10 @@
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
                             </li>
                             <li>
+                                <a href="{{route('admin.work-category')}}"
+                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Work Category</a>
+                            </li>
+                            <li>
                                 <a href="{{route('admin.work')}}"
                                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Work</a>
                             </li>

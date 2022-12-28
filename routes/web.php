@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ArtWorkController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\ArtWorkCategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,10 @@ Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
         Route::get('/', [ArtWorkController::class, 'index'])->name('admin.work');
         Route::get('/create', [ArtWorkController::class, 'create'])->name('admin.work.create');
         Route::get('/edit/{work}', [ArtWorkController::class, 'edit'])->name('admin.work.edit');
+    });
+
+    Route::prefix('work-category')->group(function () {
+        Route::get('/', [ArtWorkCategoryController::class, 'index'])->name('admin.work-category');
     });
     
     Route::prefix('/contact')->group(function () {
