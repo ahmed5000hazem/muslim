@@ -43,7 +43,6 @@ class Index extends Component implements HasTable
         }
         return [
             SelectFilter::make('type')->options($enum)->attribute('type'),
-            // Filter::make('is_featured')->query(fn (Builder $query): Builder => $query->where('is_featured', true))
         ];
     }
 
@@ -53,7 +52,9 @@ class Index extends Component implements HasTable
             $enum[$type->name] = $type->value;
         }
         return [
-            TextColumn::make('title'),
+            TextColumn::make('title')->url(function ($record) {
+                return route('admin.work.edit', ['work' => $record->id]);
+            }),
             TextColumn::make('description')->words(15),
             TextColumn::make('work_link'),
             TextColumn::make('type')->enum($enum),

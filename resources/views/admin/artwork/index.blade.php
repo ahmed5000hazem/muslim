@@ -5,7 +5,10 @@
         <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-700 px-24 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 m-6 rounded  mx-auto bg-white">
-                    <h2 class="text-xl"> Previous Work </h2>
+                    <h2 class="text-xl"> Previous Art Work </h2>
+                    <div class="px-8 py-4 pt-9">
+                        <a class="rounded px-5 py-2 text-sm bg-gray-900 mt-6 text-slate-50" href="{{route('admin.work.create')}}">create art work</a>
+                    </div>
                     <div class="px-8 py-6">
                         <livewire:work.index>
                     </div>
