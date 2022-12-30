@@ -655,28 +655,51 @@
                                         </div>
                                         <div class="more-info">
                                             <p class="lead">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis dolorum
-                                                dolorem soluta quidem
-                                                expedita aperiam aliquid at.
-                                                Totam magni ipsum suscipit amet? Autem nemo esse laboriosam ratione
-                                                nobis
-                                                mollitia inventore?
+                                                send us a message we are happy to get in touch with you and we will never stop surprise you.
                                             </p>
                                             <ul class="list-ico">
-                                                <li><span class="bi bi-phone"></span> (617) 557-0089</li>
-                                                <li><span class="bi bi-envelope"></span> contact@example.com</li>
+                                                <li><span class="bi bi-phone"></span> {{$user->phone}} </li>
+                                                <li><span class="bi bi-envelope"></span> {{$user->email}}</li>
                                             </ul>
                                         </div>
                                         <div class="socials">
                                             <ul>
-                                                <li><a href=""><span class="ico-circle" style="padding: 3px"><i
-                                                                class="bi bi-facebook"></i></span></a></li>
-                                                <li><a href=""><span class="ico-circle" style="padding: 3px"><i
-                                                                class="bi bi-instagram"></i></span></a></li>
-                                                <li><a href=""><span class="ico-circle" style="padding: 3px"><i
-                                                                class="bi bi-twitter"></i></span></a></li>
-                                                <li><a href=""><span class="ico-circle" style="padding: 3px"><i
-                                                                class="bi bi-linkedin"></i></span></a></li>
+                                                @if(isset($home['facebook_link']) && $home['facebook_link'])
+                                                <li>
+                                                    <a href="{{$home['facebook_link']}}">
+                                                        <span class="ico-circle" style="padding: 3px">
+                                                            <i class="bi bi-facebook"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                @endif
+                                                @if(isset($home['youtube_link']) && $home['youtube_link'])
+                                                <li>
+                                                    <a href="{{$home['youtube_link']}}">
+                                                        <span class="ico-circle" style="padding: 3px">
+                                                            <i class="bi bi-youtube"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                @endif
+                                                @if(isset($home['instagram_link']) && $home['instagram_link'])
+                                                <li>
+                                                    <a href="{{$home['instagram_link']}}">
+                                                        <span class="ico-circle" style="padding: 3px">
+                                                            <i class="bi bi-instagram"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                @endif
+                                                @if(isset($home['twitter_link']) && $home['twitter_link'])
+                                                <li>
+                                                    <a href="{{$home['twitter_link']}}">
+                                                        <span class="ico-circle" style="padding: 3px">
+                                                            <i class="bi bi-twitter"></i>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                @endif
                                             </ul>
                                         </div>
                                     </div>

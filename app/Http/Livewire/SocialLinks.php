@@ -19,6 +19,7 @@ class SocialLinks extends Component implements HasForms
         return [
             TextInput::make('facebook_link'),
             TextInput::make('youtube_link'),
+            TextInput::make('instagram_link'),
             TextInput::make('twitter_link'),
         ];
     }
