@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Work;
 
 use App\Kernel\EnumManager\ArtWorkTypeEnum;
 use App\Models\ArtWork;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
@@ -46,6 +47,8 @@ class Index extends Component implements HasTable
             SelectFilter::make('type')->options($enum)->attribute('type'),
             Filter::make('featured')->query(fn (Builder $query): Builder => $query->where('featured', 1)),
             Filter::make('normal work')->query(fn (Builder $query): Builder => $query->where('featured', 0)),
+            Filter::make('visible')->query(fn (Builder $query): Builder => $query->where('visible', 1)),
+            Filter::make('not visible')->query(fn (Builder $query): Builder => $query->where('visible', 0)),
         ];
     }
 
@@ -59,9 +62,21 @@ class Index extends Component implements HasTable
             }),
             TextColumn::make('description')->words(5),
             ToggleColumn::make('featured'),
-            TextColumn::make('work_link'),
+            ToggleColumn::make('visible'),
+            TextColumn::make('work_link')->url(function ($record) {
+                return $record->work_link;
+            }),
             TextColumn::make('type')->enum($enum),
             ImageColumn::make('image')
+        ];
+    }
+
+    protected function getTableActions(): array
+    {
+        return [
+            Action::make('delete')->action(function ($record) {
+                ArtWork::where('id', $record->id)->delete();
+            })->color('danger')->icon('heroicon-o-trash')->label('')->size('lg')
         ];
     }
 

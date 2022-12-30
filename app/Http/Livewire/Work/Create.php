@@ -37,6 +37,7 @@ class Create extends Component implements HasForms
             TextInput::make('work_link'),
             FileUpload::make('image')->directory('artwork')->required(),
             DatePicker::make('published_at'),
+            Toggle::make('visible')->label('visible'),
             Toggle::make('featured')->label('featured'),
             Select::make('type')->label('work type')->options($types_array)->required()
         ];
