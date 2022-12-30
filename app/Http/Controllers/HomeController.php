@@ -15,16 +15,7 @@ use Illuminate\Support\Facades\Validator;
 class HomeController extends Controller
 {
 
-    public function getHomePageData()
-    {
-        $home = Cache::remember('home-data', 60 , function () {
-            return HomePage::all();
-        });
-        foreach ($home as $rec) $data[$rec->key] = $rec->value;
-        $home = $data;
-
-        return $home;
-    }
+    
 
     public function index()
     {

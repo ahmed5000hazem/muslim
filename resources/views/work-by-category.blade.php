@@ -1,115 +1,8 @@
 @extends('layouts.master')
 @section('content')
-    @include('components.site.header')
-    @include('components.site.hero-section')
-    <main id="main">
-
-        @if ($user->about)
-            <section id="about" class="about-mf sect-pt4 route">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="box-shadow-full">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-sm-6 col-md-5">
-                                                <div class="about-img">
-                                                    <img src="{{asset('storage/'.$user->image)}}"
-                                                        class="img-fluid rounded b-shadow-a" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-7">
-                                                <div class="about-info">
-                                                    @if ($user->name)<p><span class="title-s">Name: </span> <span>{{$user->name}}</span></p>@endif
-                                                    @if ($user->title)<p><span class="title-s">Profile: </span> <span> {{$user->title}} </span></p>@endif
-                                                    @if ($user->email)<p><span class="title-s">Email: </span> <span>{{$user->email}}</span></p>@endif
-                                                    @if ($user->phone)<p><span class="title-s">Phone: </span> <span>{{$user->phone}}</span></p>@endif
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="about-me pt-4 pt-md-0">
-                                            <div class="title-box-2">
-                                                <h5 class="title-left">
-                                                    About me
-                                                </h5>
-                                            </div>
-                                            <p class="lead">
-                                                {{$user->about}}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        @endif
-
-        <section id="services" class="services-mf pt-5 route">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="title-box text-center">
-                            <h3 class="title-a">
-                                Services
-                            </h3>
-                            <p class="subtitle-a">
-                                Services we introduce
-                            </p>
-                            <div class="line-mf"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    @foreach ($artWorkCategories as $category)
-                    <div class="col-md-6">
-                        <a href="{{route('work.category', ["category" => $category->type])}}">
-                        <div class="service-box">
-                                <div class="service-ico">
-                                    <span class="ico-circle"><i class="bi {{$counterIcons[$loop->index % count($counterIcons)]}}"></i></span>
-                                    
-                                </div>
-                                <div class="service-content">
-                                    <h2 class="s-title">{{$category->title}}</h2>
-                                    <p class="s-description text-center">
-                                        {{$category->description}}
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-
-        <!-- ======= Counter Section ======= -->
-        <div class="section-counter paralax-mf bg-image" style="background-image: url(assets/img/counters-bg.jpg)">
-            <div class="overlay-mf"></div>
-            <div class="container position-relative">
-                <div class="row">
-                    @foreach ($counts as $key => $count)
-                    <div class="col-sm-3 col-lg-3">
-                        <div class="counter-box counter-box pt-4 pt-md-0">
-                            <div class="counter-ico">
-                                <span class="ico-circle" style="padding-top:5px"><i class=" bi {{$counterIcons[$loop->index % count($counterIcons)]}}"></i></span>
-                            </div>
-                            <div class="counter-num">
-                                <p data-purecounter-start="0" data-purecounter-end="{{$count}}"
-                                    data-purecounter-duration="1" class="counter purecounter"></p>
-                                <span class="counter-text">{{$workTypes[$key]}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        <section id="work" class="portfolio-mf sect-pt4 route">
+    @include('components.site.header', ['dataPage' => 'workCategory'])
+    <main id="main" class="mt-5">
+        <section id="work" style="margin-top: 200px" class="portfolio-mf sect-pt4 route">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -118,14 +11,14 @@
                                 Portfolio
                             </h3>
                             <p class="subtitle-a">
-                                Featured & Trends
+                                {{request()->route('category') == 0? 'All Art Work' : $workTypes[request()->route('category')]}}
                             </p>
                             <div class="line-mf"></div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    @foreach ($artworks as $work)
+                    @forelse ($artworks as $work)
                     <div class="col-md-4">
                         <div class="work-box">
                             <a href="{{asset('/storage/'.$work->image)}}" data-gallery="portfolioGallery"
@@ -139,7 +32,7 @@
                                     <div class="col-sm-8">
                                         <h2 class="w-title">{{$work->title}}</h2>
                                         <div class="w-more">
-                                            <span class="w-ctegory"><a href="{{route('work.category', ['category' => $work->type])}}" class="text-primary"> {{$workTypes[$work->type]}} </a> </span>
+                                            <span class="w-ctegory"> {{$workTypes[$work->type]}} </span>
                                             <span class="w-date"> {{$work->created_at->format('d M . Y')}} </span>
                                         </div>
                                     </div>
@@ -153,11 +46,16 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    @empty
+                        <div class="alert alert-primary text-center fs-5"  style="text-transform: capitalize"> unfortunately category has no data </div>
+                    @endforelse
 
                 </div>
+                {{$artworks->links('vendor.pagination.bootstrap-5')}}
             </div>
         </section>
+
+        <!-- ======= Contact Section ======= -->
         <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route"
             style="background-image: url(assets/img/overlay-bg.jpg)">
             <div class="overlay-mf"></div>
