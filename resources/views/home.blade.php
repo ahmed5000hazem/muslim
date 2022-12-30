@@ -70,7 +70,8 @@
                         <a href="{{asset("/category/$category->type")}}">
                         <div class="service-box">
                                 <div class="service-ico">
-                                    <span class="ico-circle"><i class="bi bi-briefcase"></i></span>
+                                    <span class="ico-circle"><i class="bi {{$counterIcons[$loop->index % count($counterIcons)]}}"></i></span>
+                                    
                                 </div>
                                 <div class="service-content">
                                     <h2 class="s-title">{{$category->title}}</h2>
