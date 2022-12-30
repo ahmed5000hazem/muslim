@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Kernel\EnumManager\ArtWorkTypeEnum;
+use App\Models\ArtWork;
+use App\Models\ArtWorkCategory;
 use App\Models\HomePage;
 use App\Models\Message;
 use App\Models\User;
@@ -26,8 +29,30 @@ class HomeController extends Controller
     public function index()
     {
         $user = User::where('role', 'site-owner')->first();
+        $artWorkCategories = ArtWorkCategory::all();
+        $artworks = ArtWork::where('featured', 1)->get();
         $home = $this->getHomePageData();
-        return view('home', compact('user', 'home'));
+        foreach (ArtWorkTypeEnum::cases() as $case) {
+            $counts[$case->name] = ArtWork::where('type', $case->name)->count();
+            $workTypes[$case->name] = $case->value;
+        }
+
+        $counterIcons = [
+            'bi-display',
+            'bi-music-note-list',
+            'bi-play-btn',
+            'bi-award'
+        ];
+        
+        return view('home', compact(
+            'user', 
+            'home', 
+            'artWorkCategories', 
+            'artworks', 
+            'workTypes',
+            'counts',
+            'counterIcons',
+        ));
     }
 
     public function getInTouch(Request $request)
