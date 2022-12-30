@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\ArtWorkCategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WorkController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::post('/contact', [HomeController::class, 'getInTouch']);
+
+Route::get('/category/{category}', [WorkController::class, 'getWorkByCategory'])->name('work.category');
 
 Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
 

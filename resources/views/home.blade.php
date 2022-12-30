@@ -58,7 +58,7 @@
                                 Services
                             </h3>
                             <p class="subtitle-a">
-                                Services that we introduce
+                                Services we introduce
                             </p>
                             <div class="line-mf"></div>
                         </div>
@@ -67,7 +67,7 @@
                 <div class="row">
                     @foreach ($artWorkCategories as $category)
                     <div class="col-md-6">
-                        <a href="{{asset("/category/$category->type")}}">
+                        <a href="{{route('work.category', ["category" => $category->type])}}">
                         <div class="service-box">
                                 <div class="service-ico">
                                     <span class="ico-circle"><i class="bi {{$counterIcons[$loop->index % count($counterIcons)]}}"></i></span>
