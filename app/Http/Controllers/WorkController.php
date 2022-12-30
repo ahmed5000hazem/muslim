@@ -27,4 +27,15 @@ class WorkController extends Controller
 
         return view('work-by-category', compact('workTypes', 'artworks', 'user', 'home'));
     }
+
+    public function workDetails(ArtWork $work)
+    {
+
+        foreach (ArtWorkTypeEnum::cases() as $case) {
+            $workTypes[$case->name] = $case->value;
+        }
+        $home = $this->getHomePageData();
+        $user = User::where('role', 'site-owner')->first();
+        return view('work', compact('work', 'workTypes', 'home', 'user'));
+    }
 }

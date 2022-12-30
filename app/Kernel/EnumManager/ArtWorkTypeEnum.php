@@ -3,8 +3,8 @@
 namespace App\Kernel\EnumManager;
 
 enum ArtWorkTypeEnum:string {
-    case Intro = 'movie / series intro';
-    case Music = 'audio music';
-    case Clip = 'clip';
-    case TVShow = 'tv shows';
+    case Intro = 'Movie / Series Intro';
+    case Music = 'Audio Music';
+    case Clip = 'Clip';
+    case TVShow = 'Tv Shows';
 }

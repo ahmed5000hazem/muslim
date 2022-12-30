@@ -23,6 +23,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::post('/contact', [HomeController::class, 'getInTouch']);
 
 Route::get('/category/{category}', [WorkController::class, 'getWorkByCategory'])->name('work.category');
+Route::get('/work/{work}', [WorkController::class, 'workDetails'])->name('work');
 
 Route::prefix('/dashboard')->middleware(['auth'])->group(function () {
 

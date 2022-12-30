@@ -9,7 +9,7 @@
 
         <nav id="navbar" class="navbar">
             @if(isset($dataPage))
-            <ul>
+            <ul style="text-transform:uppercase">
                 <li><a class="nav-link scrollto active" href="{{asset('/')}}">Home</a></li>
                 <li><a class="nav-link scrollto" href="{{asset('/#about')}}">About</a></li>
                 <li><a class="nav-link scrollto" href="{{asset('/#services')}}">Services</a></li>
@@ -27,7 +27,7 @@
                 <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
             </ul>
             @else    
-            <ul>
+            <ul style="text-transform:uppercase">
                 <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                 <li><a class="nav-link scrollto" href="#about">About</a></li>
                 <li><a class="nav-link scrollto" href="#services">Services</a></li>
