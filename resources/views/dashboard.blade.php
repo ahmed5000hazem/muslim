@@ -9,6 +9,10 @@
                     <div class="px-8 py-6">
                         <livewire:site-settings>
                     </div>
+                    <h2 class="text-xl">Social Links</h2>
+                    <div class="px-8 py-6">
+                        <livewire:social-links>
+                    </div>
                 </div>
             </div>
         </div>
